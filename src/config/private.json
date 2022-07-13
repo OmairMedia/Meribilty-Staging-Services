@@ -1,0 +1,28 @@
+{
+  "config_fb": {
+    "apiKey": "AIzaSyDHo2tJrP5bwgbYzvJkmXpttE0S09ZUQpY",
+    "authDomain": "meribilty.firebaseapp.com",
+    "databaseURL": "https://meribilty-default-rtdb.firebaseio.com",
+    "projectId": "meribilty",
+    "storageBucket": "meribilty.appspot.com",
+    "messagingSenderId": "830251309129",
+    "appId": "1:830251309129:web:5b28781336310f473e0798"
+  },
+  "twilio": {
+    "accountSid": "ACdf3c9dd58c5c293af6a30ec1ea212d50",
+    "authToken": "aba225227762b749ebf386a142c2d23c",
+    "phone": "+18022786630"
+  },
+  "smtp": {
+    "host": "Meribilty.com",
+    "port": 465,
+    "secure": false
+  },
+  "stripe": {
+    "publishable_key": "pk_test_51JpDLpSFdlvL61rTw0tzW12wsItqg0WcP3MxBgDmpSOWEqEEIfDzqAXYehzlklkzm7eAp7fNuoe553nEyp8xDC9G00kJpC7FLy",
+    "secret_key": "sk_test_51JpDLpSFdlvL61rTnFcYYDdpbUNio6F80VwSqmS9DtGpXsCwUjJcdmBS6v52UIlvehU4d8VtCvPbEQJo7IyEFnsY00l1p76bah"
+  },
+  "sms": {
+    "apikey": "b23838b9978affdf2aab3582e35278c6"
+  }
+}

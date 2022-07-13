@@ -1,0 +1,73 @@
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+    "applications": {
+      ".indexOn": ["bussiness_name","phone"]
+    },
+    "users": {
+      "drivers": {
+        ".indexOn": ["phone","online","referer"]
+      },
+      "users": {
+        ".indexOn": ["phone","referer"]
+      },
+      "vendors": {
+        ".indexOn": ["phone"]
+      }
+    },
+    "requests": {
+      "scm": {
+        ".indexOn": ["orderNo", "user_phone"]
+      },
+      "ppl": {
+        ".indexOn": ["orderNo", "user_phone","subOrderNo","biltyNo"]
+      }
+    },
+    "biddings": {
+      "transit": {
+        "qoutes": {
+          ".indexOn": ["orderNo", "qouteId","subOrderNo","biltyNo"]
+        },
+        "user_counter": {
+          ".indexOn": ["user_phone", "orderNo","subOrderNo","biltyNo"]
+        },
+        "vendor_counter": {
+          ".indexOn": ["user_phone", "orderNo","subOrderNo","biltyNo"]
+        }
+      },
+      "upcountry": {
+        "qoutes": {
+          ".indexOn": ["orderNo", "qouteId","subOrderNo","biltyNo"]
+        },
+        "user_counter": {
+          ".indexOn": ["user_phone", "orderNo","subOrderNo","biltyNo"]
+        },
+        "vendor_counter": {
+          ".indexOn": ["user_phone", "orderNo","subOrderNo","biltyNo"]
+        }
+      }
+    },
+    "sms": {
+      "registration": {
+        ".indexOn": "code"
+      },
+      "invited": {
+        ".indexOn": "code"
+      },
+      "forgotpassword": {
+        ".indexOn": "code"
+      }
+    },
+    "vendor_vehicles": {
+      ".indexOn": "vehicle_number"
+    },
+    "settings": {
+      "ppl": {
+        "estimation": {
+          ".indexOn": "origin"
+        }
+      }
+    }
+  }
+}

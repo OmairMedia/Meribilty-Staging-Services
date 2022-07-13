@@ -1,0 +1,102 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "text": {
+      ".read": true,
+      ".write": true
+    },
+    "users": {
+      ".indexOn": [
+        "mob_no",
+        "email",
+        "blocked",
+        "type",
+        "adda_ref",
+        "cnic_no",
+        "createdAt",
+        "vendorId"
+      ],
+      ".read": "true",
+      ".write": "false",
+      "$uid": {
+        "rating": {
+          ".read": "auth != null",
+          ".write": "auth != null"
+        },
+        ".write": "$uid === auth.uid || auth.uid === 'EqSMcc6A2yfgKAjiVnLMaGD82P93' || auth.uid ===  'DerqRbXa2iZYe8Lw3bTrxI4jtv92'"
+      }
+    },
+    "heavyVehicles": {
+      ".read": "auth != null",
+      ".indexOn": ["clientId", "vendorId"]
+    },
+    "admin": {
+      "api": {
+        ".read": "auth == null",
+        ".write": "false"
+      },
+      "heavy_vehicles_list": {
+        ".read": "auth == null",
+        ".write": "auth == null"
+      },
+      ".read": "auth != null",
+      ".write": "auth.uid === 'EqSMcc6A2yfgKAjiVnLMaGD82P93' || auth.uid ===  'DerqRbXa2iZYe8Lw3bTrxI4jtv92'"
+    },
+    "accounts": {
+      ".read": "auth != null",
+      ".write": "auth.uid === 'EqSMcc6A2yfgKAjiVnLMaGD82P93' || auth.uid ===  'DerqRbXa2iZYe8Lw3bTrxI4jtv92'",
+      "invoices": {
+        "clients": {
+          ".indexOn": ["invoice_no", "client_uid"]
+        },
+        "drivers": {
+          ".indexOn": "invoice_no"
+        }
+      }
+    },
+    "requests": {
+      ".read": "auth != null",
+      ".write": "auth != null",
+      "logistics": {
+        ".indexOn": ["clientId", "createdAt", "status"]
+      },
+      "heavyVehicles": {
+        ".indexOn": ["clientId", "createdAt", "status"]
+      },
+      "transport": {
+        ".indexOn": ["clientId", "createdAt"]
+      }
+    },
+    "sessions": {
+      ".indexOn": ["userID"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "online_drivers": {
+      ".indexOn": ["addedTime", "statusVehicle"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "forgot_pass_token": {
+      ".indexOn": ["mob_no"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "notification_keys": {
+      ".indexOn": ["token"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "vendors_notifications": {
+      ".indexOn": ["vendorId"],
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "adda_list": {
+      ".indexOn": ["place_name", "id"],
+      ".read": "auth.uid != null",
+      ".write": "auth.uid === 'EqSMcc6A2yfgKAjiVnLMaGD82P93' || auth.uid ===  'DerqRbXa2iZYe8Lw3bTrxI4jtv92'"
+    }
+  }
+}
