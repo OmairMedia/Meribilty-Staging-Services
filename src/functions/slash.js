@@ -221,6 +221,7 @@ module.exports = {
     var commission = 0;
     
     let commissionSnap = await pplSettingsRef.child("commission").once('value');
+    let taxSnap = await pplSettingsRef.child("commission").once('value');
 
 
     pplSettingsRef.child("commission").once('value', (snapshot) => {

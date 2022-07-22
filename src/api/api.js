@@ -6522,7 +6522,11 @@ router.post(
       if (snapshot.val()) {
         const invoice = snapshot.val();
         req.body.orderInvoice = invoice;
-        next();
+        res.json({
+          status:true,
+          user: invoice.user,
+          vendor: invoice.vendor
+        })
       } else {
         res.json({
           status: false,
@@ -6530,58 +6534,6 @@ router.post(
         });
       }
     });
-  },
-  // Create Bilty Invoice
-  (req, res) => {
-    const params = req.body;
-
-    let biltyNo = params.biltyNo;
-
-    const transitbilties = params.orderInvoice.bilty;
-
-    if (transitbilties) {
-      if (transitbilties.length !== 0) {
-        const filterOut = transitbilties.filter((bilty) => {
-          return bilty.biltyNo === biltyNo;
-        });
-
-        if (filterOut) {
-          if (filterOut.length !== 0) {
-            const bilty = filterOut[0];
-            console.log("bilty -> ", bilty);
-
-            let data = {
-              ...bilty,
-              payment_method: params.orderInvoice.payment_method,
-              point_of_payment: params.orderInvoice.point_of_payment,
-              order_accepted_on: params.orderInvoice.order_accepted_on,
-              originAddress: params.orderInvoice.originAddress,
-              payableAmount: params.orderInvoice.payableAmount,
-              payment_approval: params.orderInvoice.payment_approval,
-              user_phone: params.orderInvoice.user_phone,
-              username: params.orderInvoice.username,
-              vendor_name: params.orderInvoice.vendor_name,
-              vendor_phone: params.orderInvoice.vendor_phone,
-              destinationAddress: params.orderInvoice.destinationAddress,
-              containerReturnAddress:
-                params.orderInvoice.containerReturnAddress,
-              date: params.orderInvoice.date,
-              amount: params.orderInvoice.amount,
-            };
-
-            res.json({
-              status: true,
-              data: data,
-            });
-          } else {
-            res.json({
-              status: false,
-              error: "Bilty Not Found !",
-            });
-          }
-        }
-      }
-    }
   }
 );
 
