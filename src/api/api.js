@@ -64,7 +64,7 @@ const storage = new Storage({
   keyFilename: "src/config/serviceAccount.json",
 });
 
-const bucket = storage.bucket("meribilty-files");
+const bucket = storage.bucket("meribilty-staging.appspot.com");
 
 const JWT_SECRET =
   "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
@@ -5681,7 +5681,7 @@ router.post(
   //       prefix: `ProfileImages/`,
   //     };
 
-  //     const [files] = await storage.bucket("meribilty-files").getFiles(options);
+  //     const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
   //     var uploadImages = [];
 
   //     files.forEach((file) => {

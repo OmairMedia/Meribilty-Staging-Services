@@ -27,7 +27,7 @@ const storage = new Storage({
   keyFilename: "src/config/serviceAccount.json",
 });
 
-const bucket = storage.bucket("meribilty-files");
+const bucket = storage.bucket("meribilty-staging.appspot.com");
 
 // Helper Functions
 const {
@@ -157,7 +157,7 @@ router.post(
       prefix: `Profiles/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {
@@ -641,7 +641,7 @@ router.post(
       prefix: `Vendors/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {

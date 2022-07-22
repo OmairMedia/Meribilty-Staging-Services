@@ -83,7 +83,7 @@ const { Storage } = require("@google-cloud/storage");
 const storage = new Storage({
   keyFilename: "src/config/serviceAccount.json",
 });
-const bucket = storage.bucket("meribilty-files");
+const bucket = storage.bucket("meribilty-staging.appspot.com");
 
 
 const { Client } = require("@googlemaps/google-maps-services-js");
@@ -5117,7 +5117,7 @@ router.post(
       prefix: `UpcountryDocuments/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {
@@ -5316,7 +5316,7 @@ router.post(
       prefix: `TransitCargoDocuments/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {
@@ -6439,7 +6439,7 @@ router.post(
     // console.log("filetype -> ", filetype);
     // console.log("documentName -> ", documentName);
 
-    // const bucket = storage.bucket("meribilty-files");
+    // const bucket = storage.bucket("meribilty-staging.appspot.com");
     // const document = bucket.file("TransitCargoDocuments/" + documentName);
     const path = "VendorDrivers/";
 
@@ -6498,7 +6498,7 @@ router.post(
       prefix: `VendorDrivers/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {

@@ -14,7 +14,7 @@ const {
 } = require("../../functions/notifications");
 
 const _ = require("lodash");
-const bucket = storage.bucket("meribilty-files");
+const bucket = storage.bucket("meribilty-staging.appspot.com");
 const orderNo = require("order-no");
 const { remove, update, isArray } = require("lodash");
 const { Client } = require("@googlemaps/google-maps-services-js");
@@ -4217,7 +4217,7 @@ router.post(
         prefix: `BankPaymentSlips/`,
       };
 
-      const [files] = await storage.bucket("meribilty-files").getFiles(options);
+      const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
       var uploadImages = [];
 
       files.forEach((file) => {
@@ -6687,7 +6687,7 @@ router.post(
       prefix: `UpcountryDocuments/${params.orderNo}/`,
     };
 
-    const [files] = await storage.bucket(`meribilty-files`).getFiles(options);
+    const [files] = await storage.bucket(`meribilty-staging.appspot.com`).getFiles(options);
 
     files.forEach((file, i) => {
       if (`UpcountryDocuments/${params.orderNo}/` !== file.name) {
@@ -6702,7 +6702,7 @@ router.post(
     const alreadyUploadedDocs = req.body.fileNames;
     var currentUploadingDocs = [];
     const path = `UpcountryDocuments/${req.body.orderNo}/`;
-    const bucket = storage.bucket(`meribilty-files`);
+    const bucket = storage.bucket(`meribilty-staging.appspot.com`);
 
     // Uploading Bill of landing
     if (req.files.bill_of_landing) {
@@ -6735,7 +6735,7 @@ router.post(
                     console.log("bill of landing Updated!");
                     currentUploadingDocs.push({
                       name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                     });
                   }
                 }
@@ -6755,7 +6755,7 @@ router.post(
                       console.log("bill of landing uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                       });
                     }
                   }
@@ -6774,7 +6774,7 @@ router.post(
                 console.log("bill of landing uploaded");
                 currentUploadingDocs.push({
                   name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                  url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                  url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                 });
               }
             }
@@ -6813,7 +6813,7 @@ router.post(
                     console.log("bill of landing Updated!");
                     currentUploadingDocs.push({
                       name: `${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
                     });
                   }
                 }
@@ -6833,7 +6833,7 @@ router.post(
                       console.log("detail packing list uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
                       });
                     }
                   }
@@ -6852,7 +6852,7 @@ router.post(
                 console.log("detail packing list uploaded");
                 currentUploadingDocs.push({
                   name: `${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
-                  url: `https://storage.googleapis.com/meribilty-files/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
+                  url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${detail_packing_list_name}.${detail_packing_list_filetype}`,
                 });
               }
             }
@@ -7063,7 +7063,7 @@ router.post(
       prefix: `TransitCargoDocuments/${params.orderNo}/`,
     };
 
-    const [files] = await storage.bucket(`meribilty-files`).getFiles(options);
+    const [files] = await storage.bucket(`meribilty-staging.appspot.com`).getFiles(options);
 
     files.forEach((file, i) => {
       if (`TransitCargoDocuments/${params.orderNo}/` !== file.name) {
@@ -7078,7 +7078,7 @@ router.post(
     const alreadyUploadedDocs = req.body.fileNames;
     var currentUploadingDocs = [];
     const path = `TransitCargoDocuments/${req.body.orderNo}/`;
-    const bucket = storage.bucket(`meribilty-files`);
+    const bucket = storage.bucket(`meribilty-staging.appspot.com`);
 
     // Uploading Bill of landing
     if (req.files.bill_of_landing) {
@@ -7111,7 +7111,7 @@ router.post(
                     console.log("bill of landing Updated!");
                     currentUploadingDocs.push({
                       name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                     });
                   }
                 }
@@ -7131,7 +7131,7 @@ router.post(
                       console.log("bill of landing uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                       });
                     }
                   }
@@ -7150,7 +7150,7 @@ router.post(
                 console.log("bill of landing uploaded");
                 currentUploadingDocs.push({
                   name: `${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
-                  url: `https://storage.googleapis.com/meribilty-files/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
+                  url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${bill_of_landing_name}.${bill_of_landing_filetype}`,
                 });
               }
             }
@@ -7188,7 +7188,7 @@ router.post(
                     console.log("bill of landing Updated!");
                     currentUploadingDocs.push({
                       name: `${path}${invoice_name}.${invoice_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${invoice_name}.${invoice_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${invoice_name}.${invoice_filetype}`,
                     });
                   }
                 }
@@ -7208,7 +7208,7 @@ router.post(
                       console.log("bill of landing uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${invoice_name}.${invoice_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${invoice_name}.${invoice_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${invoice_name}.${invoice_filetype}`,
                       });
                     }
                   }
@@ -7222,7 +7222,7 @@ router.post(
               console.log("bill of landing uploaded");
               currentUploadingDocs.push({
                 name: `${path}${invoice_name}.${invoice_filetype}`,
-                url: `https://storage.googleapis.com/meribilty-files/${path}${invoice_name}.${invoice_filetype}`,
+                url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${invoice_name}.${invoice_filetype}`,
               });
             }
           });
@@ -7254,7 +7254,7 @@ router.post(
                   console.log("gd of landing uploaded");
                   currentUploadingDocs.push({
                     name: `${path}${gd_name}.${gd_filetype}`,
-                    url: `https://storage.googleapis.com/meribilty-files/${path}${gd_name}.${gd_filetype}`,
+                    url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${gd_name}.${gd_filetype}`,
                   });
                 }
               });
@@ -7268,7 +7268,7 @@ router.post(
                     console.log("gd of landing uploaded");
                     currentUploadingDocs.push({
                       name: `${path}${gd_name}.${gd_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${gd_name}.${gd_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${gd_name}.${gd_filetype}`,
                     });
                   }
                 });
@@ -7281,7 +7281,7 @@ router.post(
               console.log("gd of landing uploaded");
               currentUploadingDocs.push({
                 name: `${path}${gd_name}.${gd_filetype}`,
-                url: `https://storage.googleapis.com/meribilty-files/${path}${gd_name}.${gd_filetype}`,
+                url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${gd_name}.${gd_filetype}`,
               });
             }
           });
@@ -7318,7 +7318,7 @@ router.post(
                     console.log("demand_letter of landing uploaded");
                     currentUploadingDocs.push({
                       name: `${path}${demand_letter_name}.${demand_letter_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${demand_letter_name}.${demand_letter_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${demand_letter_name}.${demand_letter_filetype}`,
                     });
                   }
                 }
@@ -7338,7 +7338,7 @@ router.post(
                       console.log("demand_letter of landing uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${demand_letter_name}.${demand_letter_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${demand_letter_name}.${demand_letter_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${demand_letter_name}.${demand_letter_filetype}`,
                       });
                     }
                   }
@@ -7357,7 +7357,7 @@ router.post(
                 console.log("demand_letter of landing uploaded");
                 currentUploadingDocs.push({
                   name: `${path}${demand_letter_name}.${demand_letter_filetype}`,
-                  url: `https://storage.googleapis.com/meribilty-files/${path}${demand_letter_name}.${demand_letter_filetype}`,
+                  url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${demand_letter_name}.${demand_letter_filetype}`,
                 });
               }
             }
@@ -7394,7 +7394,7 @@ router.post(
                     console.log("packaging_list of landing uploaded");
                     currentUploadingDocs.push({
                       name: `${path}${packaging_list_name}.${packaging_list_filetype}`,
-                      url: `https://storage.googleapis.com/meribilty-files/${path}${packaging_list_name}.${packaging_list_filetype}`,
+                      url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${packaging_list_name}.${packaging_list_filetype}`,
                     });
                   }
                 }
@@ -7414,7 +7414,7 @@ router.post(
                       console.log("packaging_list of landing uploaded");
                       currentUploadingDocs.push({
                         name: `${path}${packaging_list_name}.${packaging_list_filetype}`,
-                        url: `https://storage.googleapis.com/meribilty-files/${path}${packaging_list_name}.${packaging_list_filetype}`,
+                        url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${packaging_list_name}.${packaging_list_filetype}`,
                       });
                     }
                   }
@@ -7433,7 +7433,7 @@ router.post(
                 console.log("packaging_list of landing uploaded");
                 currentUploadingDocs.push({
                   name: `${path}${packaging_list_name}.${packaging_list_filetype}`,
-                  url: `https://storage.googleapis.com/meribilty-files/${path}${packaging_list_name}.${packaging_list_filetype}`,
+                  url: `https://storage.googleapis.com/meribilty-staging.appspot.com/${path}${packaging_list_name}.${packaging_list_filetype}`,
                 });
               }
             }
@@ -10804,7 +10804,7 @@ router.post(
     // console.log("filetype -> ", filetype);
     // console.log("documentName -> ", documentName);
 
-    // const bucket = storage.bucket("meribilty-files");
+    // const bucket = storage.bucket("meribilty-staging.appspot.com");
     // const document = bucket.file("TransitCargoDocuments/" + documentName);
     const path = "VendorDrivers/";
 
@@ -10863,7 +10863,7 @@ router.post(
       prefix: `VendorDrivers/`,
     };
 
-    const [files] = await storage.bucket("meribilty-files").getFiles(options);
+    const [files] = await storage.bucket("meribilty-staging.appspot.com").getFiles(options);
     var uploadImages = [];
 
     files.forEach((file) => {
