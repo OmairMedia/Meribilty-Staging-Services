@@ -219,6 +219,9 @@ module.exports = {
   // Generate PPL Invoice On /order_accept
   async generatePPLinvoice(request) {
     var commission = 0;
+    
+    let commissionSnap = await pplSettingsRef.child("commission").once('value');
+
 
     pplSettingsRef.child("commission").once('value', (snapshot) => {
       if(snapshot.val()) {

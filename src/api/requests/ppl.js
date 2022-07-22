@@ -5942,7 +5942,7 @@ router.post(
 
     if(params.request.vendor_counter) {
       invoice['rates_decided'] = parseInt(params.request.vendor_counter.amount);
-      invoice['rates_decided_on'] = params.request.vendor_counter.counteredAt;
+      invoice['rates_decided_on'] = params.request.vendor_counter.vendor_countered_on;
       invoice['rates_type'] = 'Vendor Counter Accepted';
     }
 
@@ -6055,7 +6055,7 @@ router.post(
 
     let vendorInvoice = {
       ...params.customerInvoice,
-      'Transporter Name': params.request.vendor_name,
+      'Transporter Name': params.request.company_name,
       'Transporter Address': params.request.company_address,
       'Transporter Contact': params.request.vendor_phone,
     }
