@@ -16,7 +16,7 @@ exports.checkSubscriptionExpirations = new CronJob({
           let k = order.key;
           
 
-          if(o.status !== 'pending' && o.status !== 'qoute_rejected' && o.status !== 'user_counter_rejected' && o.status !== 'vendor_counter_rejected') {
+          if(o.status !== 'pending' && o.status !== 'qoute_rejected' && o.status !== 'user_counter_rejected' && o.status !== 'vendor_counter_rejected' && o.status !== 'cancelled' && o.status !== 'rejected') {
             if (o.documents !== undefined) {
               if (o.request_type === "transit" && o.documents.length < 5) {
                 // console.log(`req type is:  ${o.request_type}:${k} /  ${o.documents.length}`);

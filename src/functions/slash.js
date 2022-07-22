@@ -244,8 +244,6 @@ module.exports = {
       // Vendor Qoute Is Accepted
       console.log(`OrderNo${request.orderNo} Accepted For This Vendor Qoute -> `);
 
-
-
       let invoice = {
         ...request,
         commission: commission,

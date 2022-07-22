@@ -18,7 +18,9 @@ exports.checkSubscriptionExpirations = new CronJob({
           .then(snapshot => {
           snapshot.forEach((order) => {
               let o = order.val();
-              let k = order.key;
+              
+              if(o.status !== 'pending' && o.status !== 'qoute_rejected' && o.status !== 'user_counter_rejected' && o.status !== 'vendor_counter_rejected' && o.status !== 'cancelled' && o.status !== 'rejected') {
+                let k = order.key;
   
               let creationtime = o.createdAt_timestamp;
               let now = getCurrentTimestamp();
@@ -108,6 +110,7 @@ exports.checkSubscriptionExpirations = new CronJob({
                       });
                   }
                   } 
+              }
           })
   
           }).catch(e => console.log(e))} 

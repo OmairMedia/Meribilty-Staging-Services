@@ -5895,7 +5895,7 @@ router.post(
     const booking_number = Math.floor(Math.random() * 900000) + 100000; 
 
     let invoice = {
-        Date:	params.request.createdAt,
+         Date:	params.request.createdAt,
         'Invoice Number':	`MB-INV-${invoice_number}-${params.request.orderNo}`,
         'Booking Number':	`MB-REF-${booking_number}-${params.request.orderNo}`,
         'Customer ID':	params.request.user_phone,
@@ -5946,9 +5946,6 @@ router.post(
       invoice['rates_type'] = 'Vendor Counter Accepted';
     }
 
-  
-
-
     let serviceCharges;
     let salesTax;
     let provinceAuthority;
@@ -5998,19 +5995,40 @@ router.post(
 
     let bilties = params.request.bilty;
 
-    bilties.forEach((bilty,index) => {
-      invoice[`Bilty ${index}`] = bilty.biltyNo;
-      invoice[`Vehicle Type ${index}`] = bilty.name;
-      invoice[`Weight ${index}`] = bilty.weight;
-      invoice[`Material ${index}`] = bilty.material;
-      
-      if(bilty.vehicle_number) {
-      invoice[`Vehicle Registration ${index}`] = bilty.vehicle_number;
+    bilties.map((bilty,index) => {
+      if(bilty.type === 'vehicle') {
+        invoice[`Bilty ${index}`] = bilty.biltyNo;
+        invoice[`Vehicle Type ${index}`] = bilty.name;
+        invoice[`Weight ${index}`] = bilty.weight;
+        invoice[`Material ${index}`] = bilty.material;
+        
+        if(bilty.vehicle_number) {
+        invoice[`Vehicle Registration ${index}`] = bilty.vehicle_number;
+        }
+  
+        if(bilty.vehicle_number) {
+          invoice[`Vehicle Registration ${index}`] = bilty.vehicle_number;
+        }
       }
 
-      if(bilty.vehicle_number) {
-        invoice[`Vehicle Registration ${index}`] = bilty.vehicle_number;
+      if(bilty.type === 'loading/unloading') { 
+        invoice[`Bilty ${index}`] = bilty.biltyNo;
+        
+        if(bilty.loading_options && bilty.loading_options.length > 0) {
+          bilty.loading_options.map((loading,index)=>{
+            invoice[`Loading Option ${index}`] = loading.name;
+            invoice[`Weight ${index}`] = loading.weight;
+          })
+        }
+
+        if(bilty.unloading_options && bilty.unloading_options.length > 0) {
+          bilty.unloading_options.map((unloading,index)=>{
+            invoice[`Unloading Option ${index}`] = unloading.name;
+            invoice[`Weight ${index}`] = unloading.weight;
+          }) 
+        }
       }
+      
     })
 
     console.log('serviceCharges -> ',invoice['serviceCharges'])
@@ -6095,6 +6113,9 @@ router.post(
   // Save Invoice 
   (req,res,next) => {
     const params = req.body;
+
+    console.log('params.customerInvoice -> ',params.customerInvoice)
+    console.log('params.vendorInvoice -> ',params.vendorInvoice)
 
     pplInvoiceRef
       .child(params.request.orderNo)
